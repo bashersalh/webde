@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+   <link href="style.css" rel="stylesheet"></link>
+    
+
+<style>
+.tabel{  
+   display:none;
+}
+
+.options {
+  display: none;
+}
+</style>
+
+<script>
+
+
+
+function toggleTable(tableId) {
+  var table = document.getElementById(tableId);
+  var checkbox = document.getElementById(tableId + 'Checkbox');
+  
+  if (table.style.display === 'none') {
+    table.style.display = 'table';
+    checkbox.checked = true;
+  } else {
+    table.style.display = 'none';
+    checkbox.checked = false;
+  }
+}
+
+
+
+
+document.getElementById('showOptions').addEventListener('click', function() {
+  document.getElementById('options').style.display = 'block';
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+   function validateArabicInput(input) {
+       let arabicPattern = /[\u0600-\u06FF\s]+/; // تعبيرات قوائم الحروف العربية
+       if (!arabicPattern.test(input.value)) {
+           document.getElementById("error").innerText = "الرجاء إدخال حروف باللغة العربية فقط";
+           input.value = ""; // مسح المحتوى إذا كانت الإدخالات غير صحيحة
+       } else {
+           document.getElementById("error").innerText = "";
+       }
+   }
+
+
+
+
+ </script>
+
+<script>
+
+   function validatePhoneNumber(input) {
+ let phoneNumberPattern = /^(01|02|03|04|05|06|07|08|09|10|12|13|14)\d{9}$/;
+ if (!phoneNumberPattern.test(input.value)) {
+     document.getElementById("error").innerText = "الرجاء إدخال رقم مكون من 11 خانة وأن يكون الخانتان الأوليان ترمزان إلى المحافظة";
+     
+ } else {
+     document.getElementById("error").innerText = "";
+ }
+}
+
+
+</script>
+<script>
+function validateBirthdate(input) {
+ let birthdatePattern = /^(0[1-9]|[12][0-9]|3[01])_(0[1-9]|1[0-2])_\d{4}$/;
+ if (!birthdatePattern.test(input.value)) {
+     document.getElementById("error").innerText = "الرجاء إدخال تاريخ الميلاد بالشكل dd_mm_yyyy";
+    
+ } else {
+     document.getElementById("error").innerText = "";
+ }
+}
+</script>
+
+<script>
+
+
+
+function validatePoneNumber(input) {
+ let poneNumberPattern =  /^(099|097| 091|092|094)\d{7}$/;
+ if (!poneNumberPattern.test(input.value)) {
+     document.getElementById("error").innerText = " الرجاء   إدخال الرقم حسب شركتي سرياتيل او ام تي ان ";
+     
+ } else {
+     document.getElementById("error").innerText = "";
+ }
+}
+
+</script>
+<script>
+function validateEmail(input) {
+       
+
+         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+         
+         if (!emailPattern.test(input.value)) {
+             document.getElementById("error").innerText = "رجاء الدخال بهذا الشكل ****@****. **";
+ } else {
+     document.getElementById("error").innerText = "";
+ }
+     }
+
+
+
+
+</script>
+
+<script>
+ function generateCaptcha() {
+   var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   var length = 6;
+   var captcha = "";
+   for (var i = 0; i < length; i++) {
+     captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+   }
+   document.getElementById("captcha").innerHTML = captcha;
+ }
+
+ function checkCaptcha() {
+   var userInput = document.getElementById("userInput").value;
+   var captcha = document.getElementById("captcha").innerHTML;
+   if (userInput === captcha) {
+     alert("CAPTCHA is correct!");
+   } else {
+     alert("CAPTCHA is incorrect. Please try again.");
+     generateCaptcha();
+   }
+ }
+</script>
+
+<script>
+
+function showSelectedOption() {
+  var selectedOption = document.querySelector('input[name="option"]:checked').value;
+  var content = '';
+  if (selectedOption === 'option1') {
+    content = 'شقة غرفتين وصالة مساحة 110';
+  } else if (selectedOption === 'option2') {
+    content = 'شقة خمس غرف 100م';
+  } else if (selectedOption === 'option3') {
+    content = 'شقة ثلاثة غرف مساحة 70م';
+  } else if (selectedOption === 'option4') {
+    content = 'ملحق كبير 75م';
+  } else if (selectedOption === 'option5') {
+    content = 'شقة فارغة غرفة صالة صغير مساحة 50م';
+  } else if (selectedOption === 'option6') {
+    content = 'سبرماركت 100م';
+  } else if (selectedOption === 'option7') {
+    content = 'فيلا 300م';
+  } else if (selectedOption === 'option8') {
+    content = 'شقة ثلاث غرف مساحة 90م';
+  } else if (selectedOption === 'option9') {
+    content = 'محضر ثلاث شقات 1000م';
+  } else if (selectedOption === 'option10') {
+    content = 'عيادة صغيرة 75م';
+  }
+  document.getElementById('selectedOption').innerText = content;
+}
+
+
+</script>
+</head>
+<body class="class4"> 
+  <div align="center"> 
+    <table border="9" cellpadding="4" cellspacing="15"class="dive">
+      
+  
+<tr class="class1">
+<td align="center">أختيار</td>
+<td align="center">إظهار اتفاصيل </td>
+<td align="center">الإجار الشهري </td>
+<td align="center">تفاصيل</td>
+<td align="center">المدينة</td>
+</tr>
+    
+<tr>
+<td align="center"><input type="radio"  name="option" value="option1" /></td>
+<td align="center"> <input type="checkbox" name="checkbox" value="ho1" id="table1Checkbox" onclick="toggleTable('table1')"  id="showOptions" /> </td>
+
+<td align="center" class="class2">  <span class="spaned"><b> 500000 ل.س </b></span> </td>
+<td align="center" class="class3">      شقة غرفتين وصالة مساحة 110م </td>
+<td align="center" class="class3">دمشق</td>
+ </tr>  
+<td id="table1"  id="options" style="display:none;">
+
+        <table border="2" cellpadding="9" cellspacing="15" class="divr"    >
+ <tr>
+                                             <td >  
+                                                    <h4 class="spaned">ملاحظات</h4> 
+                                                            مخدمه
+                                              </td>
+                                               <td> 
+                                                          <br><b>المنطقة :</b> ركن الدين 
+                                                           <br><br><b>الملكية:</b>طابو
+                                                            <br><br> <b>الطابق: </b> الثالث
+                                               </td>
+</tr>
+<tr>
+
+                <td>
+                   <div class="class7" >
+                    <img src = "‏‏لقطة الشاشة (181).png"  width="160" height="120" />    </div>
+              </td>
+               <td>
+                <div class="class7" >
+                   <img src = "‏‏لقطة الشاشة (179).png"  width="160" height="120" /></div>
+               </td>
+     
+
+                
+</tr>
+        </table>
+   </td>
+
+                                            
+                                 
+
+
+
+
+<tr>
+    <td align="center"><input type="radio"   name="option" value="option2" /></td>
+    <td align="center">  <input type="checkbox" name="checkbox" value="ho1"  id="table2Checkbox" onclick="toggleTable('table2')"   id="showOptions" >        </td>
+
+
+    <td align="center"  class="class2"> <span class="spaned"><b> 560000 ل.س </b></span>  </td>
+    <td align="center" class="class3">      شقة خمس غرف  100م </td>
+    <td align="center" class="class3">حمص</td>
+    </tr>
+    <td id="table2"  id="options" style="display:none;">
+
+        <table border="2" cellpadding="9" cellspacing="15" class="divr"  >
+ <tr>
+                                             <td >  
+                                                    <h4 class="spaned">ملاحظات</h4> 
+                                                            فرش كامل 
+                                              </td>
+                                               <td> 
+                                                          <br><b>المنطقة :</b> حي الوعر 
+                                                           <br><br><b>الملكية:</b>حكم محكمه
+                                                            <br><br> <b>الطابق: </b> الاول
+                                               </td>
+</tr>
+<tr>
+
+                <td>
+                   <div class="class7" >
+                    <img src = "‏‏لقطة الشاشة (178).png"  width="160" height="120" />    </div>
+              </td>
+               <td>
+                <div class="class7" >
+                   <img src = "‏‏لقطة الشاشة (177).png"  width="160" height="120" /></div>
+               </td>
+     
+
+                
+</tr>
+        </table>
+   </td>
+
+                 
+
+
+    <tr>
+        <td align="center"><input type="radio"  name="option" value="option3"   /></td>
+        <td align="center">  <input type="checkbox" name="checkbox" value="ho1"  id="table3Checkbox" onclick="toggleTable('table3')"  id="showOptions" />        </td>
+        <td align="center"  class="class2">  <span class="spaned"><b> 870000 ل.س </b></span> </td>
+        <td align="center" class="class3">      شقة ثلاثة غرف مساحة 70م </td>
+        <td align="center" class="class3">درعا</td>
+           </tr>
+           <td id="table3"  id="options" style="display:none;">
+
+                <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+         <tr>
+                                                     <td >  
+                                                            <h4 class="spaned">ملاحظات</h4> 
+                                                                    لها كراج
+                                                      </td>
+                                                       <td> 
+                                                                  <br><b>المنطقة :</b> جاسم 
+                                                                   <br><br><b>الملكية:</b>طابو
+                                                                    <br><br> <b>الطابق: </b> الخامس
+                                                       </td>
+        </tr>
+        <tr>
+        
+                        <td>
+                           <div class="class7" >
+                            <img src = "‏‏لقطة الشاشة (217).png"  width="160" height="120" />    </div>
+                      </td>
+                       <td>
+                        <div class="class7" >
+                           <img src = "‏‏لقطة الشاشة (216).png"  width="160" height="120" /></div>
+                       </td>
+             
+        
+                        
+        </tr>
+                </table>
+           </td>
+        
+                         
+
+      
+
+
+        <tr>
+            <td align="center"><input type="radio"   name="option" value="option4"  /></td>
+            <td align="center">  <input type="checkbox" name="checkbox" value="ho1" id="table4Checkbox" onclick="toggleTable('table4')"   id="showOptions" />        </td>
+            <td align="center"  class="class2"> <span class="spaned"><b > 990000 ل.س </b></span>  </td>
+            <td align="center" class="class3">      ملحق كبير  75م </td>
+            <td align="center" class="class3">دمشق</td>
+            </tr>
+            <td id="table4" id="options" style="display:none;">
+
+                <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+         <tr>
+                                                     <td >  
+                                                            <h4 class="spaned">ملاحظات</h4> 
+                                                                    لها كراج
+                                                      </td>
+                                                       <td> 
+                                                                  <br><b>المنطقة :</b> ميدان 
+                                                                   <br><br><b>الملكية:</b>كاتب عدل
+                                                                    <br><br> <b>الطابق: </b> السابع
+                                                       </td>
+        </tr>
+        <tr>
+        
+                        <td>
+                           <div class="class7" >
+                            <img src = "‏‏لقطة الشاشة (223).png"  width="160" height="120" />    </div>
+                      </td>
+                       <td>
+                        <div class="class7" >
+                           <img src = "‏‏لقطة الشاشة (223).png"  width="160" height="120" /></div>
+                       </td>
+             
+        
+                        
+        </tr>
+                </table>
+           </td>
+        
+                         
+
+
+
+
+
+
+            <tr  >
+                <td align="center"><input type="radio"  name="option" value="option5"  /></td>
+                <td align="center">  <input type="checkbox" name="checkbox" value="ho1" id="table5Checkbox" onclick="toggleTable('table5')"  id="showOptions" />        </td>
+                <td align="center"  class="class2">  <span class="spaned"> <b>230000 ل.س </b></span> </td>
+                <td align="center" class="class3">      شقة فارغة غرفة صالة صغير مساحة 50م </td>
+                <td align="center" class="class3">طرطوس</td>
+                </tr>
+                <td id="table5" id="options" style="display:none;">
+
+                        <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+                 <tr>
+                                                             <td >  
+                                                                    <h4 class="spaned">ملاحظات</h4> 
+                                                                            مخدمه
+                                                              </td>
+                                                               <td> 
+                                                                          <br><b>المنطقة :</b> طرطوس 
+                                                                           <br><br><b>الملكية:</b>طابو
+                                                                            <br><br> <b>الطابق: </b> السادس
+                                                               </td>
+                </tr>
+                <tr>
+                
+                                <td>
+                                   <div class="class7" >
+                                    <img src = "‏‏لقطة الشاشة (214).png"  width="160" height="120" />    </div>
+                              </td>
+                               <td>
+                                <div class="class7" >
+                                   <img src = "‏‏لقطة الشاشة (205).png"  width="160" height="120" /></div>
+                               </td>
+                     
+                
+                                
+                </tr>
+                        </table>
+                   </td>
+
+
+
+                <tr>
+                    <td align="center"><input type="radio"   name="option" value="option6"   /></td>
+                    <td align="center">  <input type="checkbox" name="checkbox" value="ho1" id="table6Checkbox" onclick="toggleTable('table6')"  id="showOptions" />        </td>
+                    <td align="center"  class="class2">  <span class="spaned"><b> 200000 ل.س </b></span> </td>
+                    <td align="center" class="class3">     سبرماركت  100م </td>
+                    <td align="center" class="class3">الحسكة</td>
+                    </tr>
+
+
+
+
+                    <td id="table6" id="options" style="display:none;">
+
+                        <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+                 <tr>
+                                                             <td >  
+                                                                    <h4 class="spaned">ملاحظات</h4> 
+                                                                            مستودع
+                                                              </td>
+                                                               <td> 
+                                                                          <br><b>المنطقة :</b> باب الخير 
+                                                                           <br><br><b>الملكية:</b>طابو
+                                                                            <br><br> <b>الطابق: </b> الاول الثاني 
+                                                               </td>
+                </tr>
+                <tr>
+                
+                                <td>
+                                   <div class="class7" >
+                                    <img src = "‏‏لقطة الشاشة (224).png"  width="160" height="120" />    </div>
+                              </td>
+                               <td>
+                                <div class="class7" >
+                                   <img src = "‏‏لقطة الشاشة (225).png"  width="160" height="120" /></div>
+                               </td>
+                     
+                
+                                
+                </tr>
+                        </table>
+                   </td>
+                
+                                 
+
+
+
+                    <tr>
+                        <td align="center"><input type="radio"  name="option" value="option7"  /></td>
+                        <td align="center">  <input type="checkbox" name="checkbox" value="ho1"  id="table7Checkbox" onclick="toggleTable('table7')"  id="showOptions" />        </td>
+                        <td align="center"  class="class2">   <span class="spaned"> <b>990000 ل.س </b></span> </td>
+                        <td align="center" class="class3">     فيلا 300م </td>
+                        <td align="center" class="class3">حماة</td>
+                        </tr>
+
+                       
+                        <td id="table7" id="options" style="display:none;">
+
+                                <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+                         <tr>
+                                                                     <td >  
+                                                                            <h4 class="spaned">ملاحظات</h4> 
+                                                                                    بعيده عن تجمع
+                                                                      </td>
+                                                                       <td> 
+                                                                                  <br><b>المنطقة :</b> ابي فداء  
+                                                                                   <br><br><b>الملكية:</b>حكم محكمه
+                                                                                    <br><br> <b>الطابق: </b> طابقين
+                                                                       </td>
+                        </tr>
+                        <tr>
+                        
+                                        <td>
+                                           <div class="class7" >
+                                            <img src = "‏‏لقطة الشاشة (184).png"  width="160" height="120" />    </div>
+                                      </td>
+                                       <td>
+                                        <div class="class7" >
+                                           <img src = "‏‏لقطة الشاشة (184).png"  width="160" height="120" /></div>
+                                       </td>
+                             
+                        
+                                        
+                        </tr>
+                                </table>
+                           </td>
+                        
+                                         
+
+
+
+                        <tr>
+                            <td align="center"><input type="radio"   name="option" value="option8"  /></td>
+                            <td align="center">  <input type="checkbox" name="checkbox" value="ho1" id="table8Checkbox" onclick="toggleTable('table8')" id="showOptions"  />        </td>
+                            <td align="center"  class="class2">  <span class="spaned"> <b>980000 ل.س </b></span> </td>
+                            <td align="center" class="class3">     شقة ثلاث غرف مساحة 90م</td>
+                            <td align="center" class="class3">طرطوس</td>
+                            </tr>
+                           
+
+                            <td id="table8" id="options" style="display:none;">
+
+                                <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+                         <tr>
+                                                                     <td >  
+                                                                            <h4 class="spaned">ملاحظات</h4> 
+                                                                                    لها كراج
+                                                                      </td>
+                                                                       <td> 
+                                                                                  <br><b>المنطقة :</b> طرطوس  
+                                                                                   <br><br><b>الملكية:</b>طابو
+                                                                                    <br><br> <b>الطابق: </b> الرابع
+                                                                       </td>
+                        </tr>
+                        <tr>
+                        
+                                        <td>
+                                           <div class="class7" >
+                                            <img src = "‏‏لقطة الشاشة (206).png"  width="160" height="120" />    </div>
+                                      </td>
+                                       <td>
+                                        <div class="class7" >
+                                           <img src = "‏‏لقطة الشاشة (177).png"  width="160" height="120" /></div>
+                                       </td>
+                             
+                        
+                                        
+                        </tr>
+                                </table>
+                           </td>
+                        
+                                         
+
+
+
+
+
+                            <tr>
+                                <td align="center"><input type="radio"   name="option" value="option9"   /></td>
+                                <td align="center">  <input type="checkbox" name="checkbox" value="ho1" id="table9Checkbox" onclick="toggleTable('table9')"  id="showOptions" />        </td>
+                                <td align="center"  class="class2">  <span class="spaned"><b> 1130000 ل.س </b></span> </td>
+                                <td align="center" class="class3">    محضر ثلاث شقات 1000م</td>
+                                <td align="center" class="class3">الاذقية</td>
+                                </tr>
+                                <td id="table9" id="options" style="display:none;">
+
+                                        <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+                                 <tr>
+                                                                             <td >  
+                                                                                    <h4 class="spaned">ملاحظات</h4> 
+                                                                                            قريبه من تجمع سكاني 
+                                                                              </td>
+                                                                               <td> 
+                                                                                          <br><b>المنطقة :</b> جبله  
+                                                                                           <br><br><b>الملكية:</b>حكم محكمه
+                                                                                            <br><br> <b>الطابق: </b> خمس طوابق
+                                                                               </td>
+                                </tr>
+                                <tr>
+                                
+                                                <td>
+                                                   <div class="class7" >
+                                                    <img src = "‏‏لقطة الشاشة (220).png"  width="160" height="120" />    </div>
+                                              </td>
+                                               <td>
+                                                <div class="class7" >
+                                                   <img src = "‏‏لقطة الشاشة (182).png"  width="160" height="120" /></div>
+                                               </td>
+                                     
+                                
+                                                
+                                </tr>
+                                        </table>
+                                   </td>
+                                
+                                                 
+
+
+
+
+
+
+
+
+
+
+
+
+                                <tr>
+                                    <td align="center"><input type="radio"   name="option" value="option10"  /></td>
+                                    <td align="center">  <input type="checkbox" name="checkbox" value="ho1" id="table10Checkbox" onclick="toggleTable('table10')"  id="showOptions" />        </td>
+                                    <td align="center"  class="class2">  <span class="spaned"> <b>270000 ل.س </b></span> </td>
+                                    <td align="center" class="class3">     عيادة صغيرة 75م</td>
+                                    <td align="center" class="class3">دمشق</td>
+                                    </tr>
+                                    <td id="table10" id="options" style="display:none;">
+
+                                        <table border="2" cellpadding="9" cellspacing="15" class="divr"   >
+                                 <tr>
+                                                                             <td >  
+                                                                                    <h4 class="spaned">ملاحظات</h4> 
+                                                                                           كهرباء مخدمه
+                                                                              </td>
+                                                                               <td> 
+                                                                                          <br><b>المنطقة :</b> دوما 
+                                                                                           <br><br><b>الملكية:</b>طابو
+                                                                                            <br><br> <b>الطابق: </b> ارضي
+                                                                               </td>
+                                </tr>
+                                <tr>
+                                
+                                                <td>
+                                                   <div class="class7" >
+                                                    <img src = "‏‏لقطة الشاشة (227).png"  width="160" height="120" />    </div>
+                                              </td>
+                                               <td>
+                                                <div class="class7" >
+                                                   <img src = "‏‏لقطة الشاشة (228).png"  width="160" height="120" /></div>
+                                               </td>
+                                     
+                                
+                                                
+                                </tr>
+                                        </table>
+                                   </td>
+                                
+                                                 
+                                  
+ </table>
+
+      
+  
+<button  class="p" id="table2Checkbox" onclick="toggleTable('table11')" id="showOptions">متابعه </button>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div   id="table11" class="" id="options" style="display:none;">
+       
+   <form method="post" action="" name="applicationForm" onsubmit="return validateForm()" class="form"  >
+     <h2  class="h2"> <marquee behavior="scroll " dir="ltr" scrollamount="10">  أهلا بك </marquee>    </h2>
+    
+     <label for="name" class="label">:الاسم الثلاثي </label>
+     <input type="text" name="name"   id="arabicInput" oninput="validateArabicInput(this)" class="input"> 
+
+
+
+     <label for="nationalID" class="label">: الرقم الوطني </label>
+     <input type="text"  required maxlength="11" id="phoneNumberInput" oninput="validatePhoneNumber(this) " class="input"><br><br>
+
+
+     <label for="birthDate" class="label">: تاريخ الولادة</label><br><br>
+ <input type="text" maxlength="10" id="birthdateInput" oninput="validateBirthdate(this)" class="input"> 
+
+
+
+ <label for="phone" class="label"> :الرقم الموبايل </label> <br><br>
+<input type="text" id="poneNumberInput" oninput="validatePoneNumber(this) "   maxlength="10" class="input">
+
+
+
+<label for="email" class="label"> :الايميل</label><br><br>
+ 
+ <input type="email"  id="emailInput"  class="input"  oninput="validateEmail(this) " placeholder="*****@******.com" />
+ 
+ <h3 id="error"  class="h3"></h3>
+
+
+<p class="p2" >  <button  class="input" onclick="showSelectedOption()">   <h3>  ماذا اشتريت ؟   </h3>  </button></p>   
+<p class="p2" >  <input type="submit"  value="Submit Query" class="input" ></p>
+ 
+    <h3 id="captcha" class="h3"></h3>
+    <button onclick="generateCaptcha()">Generate CAPTCHA</button><br><br>
+    <input type="text" id="userInput" placeholder="Enter CAPTCHA" class="input"><br>
+    <button onclick="checkCaptcha()">Check CAPTCHA</button>
+   
+<div id="selectedOption"  class="h2">    </div>
+  </form>
+
+
+</div>
+ </div> 
+
+
+</body>
+</html>
+
+
+
+

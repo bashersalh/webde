@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+<style>
+form{
+text-align: right;
+border-radius: 5%;
+margin:1px;
+background:url(rrr\ \(1\).png);
+width: 550px;
+flex-direction: column;
+display: flex;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+input{
+    padding: 2%;
+    outline: none;
+    border-radius: 10%;
+    background: linear-gradient(120deg,#8d9196,#46474b);
+    margin: 2%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+p {background-color: rgba(57, 63, 71, 0.795);
+    outline: none;
+   text-align: center;
+   margin: 2%;
+}
+h3{ border-radius: 5%;
+    
+    background: linear-gradient(120deg,#8d9196,#46474b);
+    text-align: center;
+color: rgb(255, 36, 36);
+}
+div{
+  max-width: 100%;
+ 
+background:url(rrr\ \(1\).png);
+padding: 200px;
+
+position: relative;
+background-repeat: no-repeat;
+background-size:100%;
+}
+
+h2{
+text-align: center;
+margin-top: 20px;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-size: 50px;
+color: rgb(114, 117, 121);
+border-style: dashed;
+background-color: #3d3d38;
+border-width: 2px;
+padding: 10px;
+ animation-name: inherit;
+}
+label{
+
+font-size: larger;
+
+}
+</style>
+
+
+</head>
+<body>
+
+    <div align="center" >
+       
+      <form method="post" action="" name="applicationForm" onsubmit="return validateForm()">
+        <h2 > <marquee behavior="scroll " dir="ltr" scrollamount="10">  أهلا بك </marquee>    </h2>
+       
+        <label for="name">:الاسم الثلاثي </label>
+        <input type="text" name="name"   id="arabicInput" oninput="validateArabicInput(this)"> 
+   
+   
+   
+        <label for="nationalID">: الرقم الوطني </label>
+        <input type="text"  required maxlength="11" id="phoneNumberInput" oninput="validatePhoneNumber(this) "><br><br>
+   
+   
+        <label for="birthDate">: تاريخ الولادة</label><br><br>
+    <input type="text" maxlength="10" id="birthdateInput" oninput="validateBirthdate(this)"> 
+   
+   
+   
+    <label for="phone"> :الرقم الموبايل </label> <br><br>
+   <input type="text" id="poneNumberInput" oninput="validatePoneNumber(this) "   maxlength="10" >
+   
+   
+   
+   <label for="email"> :الايميل</label><br><br>
+    
+    <input type="email"  id="emailInput"  oninput="validateEmail(this) " placeholder="*****@******.com" /> <h3 id="error"></h3>
+  <p>  <input type="submit"  value="Submit Query"></p>
+    
+        
+       <h3 id="captcha"></h3>
+       <button onclick="generateCaptcha()">Generate CAPTCHA</button><br><br>
+       <input type="text" id="userInput" placeholder="Enter CAPTCHA"><br>
+       <button onclick="checkCaptcha()">Check CAPTCHA</button>
+       </form>
+
+    </div>
+
+    <script>
+      function validateArabicInput(input) {
+          let arabicPattern = /[\u0600-\u06FF\s]+/; // تعبيرات قوائم الحروف العربية
+          if (!arabicPattern.test(input.value)) {
+              document.getElementById("error").innerText = "الرجاء إدخال حروف باللغة العربية فقط";
+              input.value = ""; // مسح المحتوى إذا كانت الإدخالات غير صحيحة
+          } else {
+              document.getElementById("error").innerText = "";
+          }
+      }
+
+
+
+
+    </script>
+
+<script>
+
+      function validatePhoneNumber(input) {
+    let phoneNumberPattern = /^(01|02|03|04|05|06|07|08|09|10|12|13|14)\d{9}$/;
+    if (!phoneNumberPattern.test(input.value)) {
+        document.getElementById("error").innerText = "الرجاء إدخال رقم مكون من 11 خانة وأن يكون الخانتان الأوليان ترمزان إلى المحافظة";
+        
+    } else {
+        document.getElementById("error").innerText = "";
+    }
+}
+
+
+</script>
+<script>
+function validateBirthdate(input) {
+    let birthdatePattern = /^(0[1-9]|[12][0-9]|3[01])_(0[1-9]|1[0-2])_\d{4}$/;
+    if (!birthdatePattern.test(input.value)) {
+        document.getElementById("error").innerText = "الرجاء إدخال تاريخ الميلاد بالشكل dd_mm_yyyy";
+       
+    } else {
+        document.getElementById("error").innerText = "";
+    }
+}
+</script>
+
+<script>
+
+
+
+function validatePoneNumber(input) {
+    let poneNumberPattern =  /^(099|097| 091|092|094)\d{7}$/;
+    if (!poneNumberPattern.test(input.value)) {
+        document.getElementById("error").innerText = " الرجاء   إدخال الرقم حسب شركتي سرياتيل او ام تي ان ";
+        
+    } else {
+        document.getElementById("error").innerText = "";
+    }
+}
+
+</script>
+<script>
+ function validateEmail(input) {
+          
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            
+            if (!emailPattern.test(input.value)) {
+                document.getElementById("error").innerText = "رجاء الدخال بهذا الشكل ****@****. **";
+    } else {
+        document.getElementById("error").innerText = "";
+    }
+        }
+
+
+
+
+</script>
+
+<script>
+    function generateCaptcha() {
+      var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var length = 6;
+      var captcha = "";
+      for (var i = 0; i < length; i++) {
+        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById("captcha").innerHTML = captcha;
+    }
+
+    function checkCaptcha() {
+      var userInput = document.getElementById("userInput").value;
+      var captcha = document.getElementById("captcha").innerHTML;
+      if (userInput === captcha) {
+        alert("CAPTCHA is correct!");
+      } else {
+        alert("CAPTCHA is incorrect. Please try again.");
+        generateCaptcha();
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفحة التأكيد</title>
+</head>
+<body>
+
+<h1>المعلومات التي أدخلتها:</h1>
+
+<div id="userInfo"></div>
+
+<script>
+// استيراد قيمة تقدير الزبون
+const userInput = JSON.parse(localStorage.getItem('userInfo'));
+
+// عرض قيم إدخال الزبون بتنسيق جميل
+document.getElementById('userInfo').innerHTML = `
+<p>رقم الهاتف: ${userInput.phone}</p>
+<p>البريد الإليكتروني: ${userInput.email}</p>
+`;
+
+// تحقق من تطابق الشروط هنا
+
+</script>
+
+</body>
+</html>
